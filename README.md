@@ -1,4 +1,4 @@
-# Car rental webiste
+# Car rental website
 1. Install xampp in your system accroding to your system configuration from the
         https://www.apachefriends.org/download.html
 2. Downloaded zip file from github extract in htdocs folder of xampp.
