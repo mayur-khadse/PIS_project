@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2021 at 06:27 AM
+-- Generation Time: Jan 09, 2021 at 11:28 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -86,7 +86,7 @@ CREATE TABLE `tblbrands` (
 --
 
 INSERT INTO `tblbrands` (`id`, `BrandName`, `CreationDate`, `UpdationDate`) VALUES
-(1, 'Maruti', '2017-06-18 16:24:34', '2017-06-19 06:42:23'),
+(1, 'MarutiS', '2017-06-18 16:24:34', '2021-01-09 03:20:30'),
 (2, 'BMW', '2017-06-18 16:24:50', NULL),
 (3, 'Audi', '2017-06-18 16:25:03', NULL),
 (4, 'Nissan', '2017-06-18 16:25:13', NULL),
@@ -111,7 +111,7 @@ CREATE TABLE `tblcontactusinfo` (
 --
 
 INSERT INTO `tblcontactusinfo` (`id`, `Address`, `EmailId`, `ContactNo`) VALUES
-(1, 'J&K Block, Laxmi Nagar', 'info@gmail.com', '8974561236');
+(1, 'NITK Campus', 'info@carrental.com', '9823971198');
 
 -- --------------------------------------------------------
 
@@ -167,19 +167,16 @@ INSERT INTO `tblpages` (`id`, `PageName`, `type`, `detail`) VALUES
 
 CREATE TABLE `tblrole` (
   `id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `pass` varchar(100) NOT NULL,
-  `role` int(11) NOT NULL
+  `role` varchar(100) NOT NULL,
+  `permissions` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tblrole`
 --
 
-INSERT INTO `tblrole` (`id`, `email`, `pass`, `role`) VALUES
-(1, 'admin@carrental.com', 'Admin@12345', 1),
-(2, 'manager@carrental.com', 'Manager@12345', 2),
-(3, 'sadikdange25@gmail.com', 'qaz', 3);
+INSERT INTO `tblrole` (`id`, `role`, `permissions`) VALUES
+(1, 'user', ' <li><a href=\"update-password.php\">Update Password</a></li>\r\n                    <li><a href=\"logout.php\">Sign Out</a></li>');
 
 -- --------------------------------------------------------
 
@@ -240,7 +237,7 @@ CREATE TABLE `tblusers` (
   `Country` varchar(100) DEFAULT NULL,
   `RegDate` timestamp NULL DEFAULT current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `role` varchar(1) NOT NULL
+  `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -248,9 +245,11 @@ CREATE TABLE `tblusers` (
 --
 
 INSERT INTO `tblusers` (`id`, `FullName`, `EmailId`, `Password`, `ContactNo`, `dob`, `Address`, `City`, `Country`, `RegDate`, `UpdationDate`, `role`) VALUES
-(1, 'Test', 'test@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '6465465465', '', 'L-890, Gaur City Ghaziabad', 'Ghaziabad', 'India', '2020-07-07 14:00:49', '2020-07-12 05:44:29', ''),
-(4, 'Sadik Dange', 'sadikdange25@gmail.com', '4eae18cf9e54a0f62b44176d074cbe2f', '9823971198', NULL, NULL, NULL, NULL, '2020-12-26 14:55:17', '2021-01-05 03:10:00', ''),
-(5, 'Ratan Tata ', 'rtata@tcs.com', 'a18cd028b52741c748c0129b201ae159', '8208113871', NULL, NULL, NULL, NULL, '2021-01-05 05:20:36', NULL, '3');
+(1, 'Test', 'test@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '6465465465', '', 'L-890, Gaur City Ghaziabad', 'Ghaziabad', 'India', '2020-07-07 14:00:49', '2020-07-12 05:44:29', 0),
+(4, 'Sadik Dange', 'sadikdange25@gmail.com', '4eae18cf9e54a0f62b44176d074cbe2f', '9823971198', NULL, NULL, NULL, NULL, '2020-12-26 14:55:17', '2021-01-06 02:36:54', 0),
+(5, 'Ratan Tata ', 'rtata@tcs.com', 'a18cd028b52741c748c0129b201ae159', '8208113871', NULL, NULL, NULL, NULL, '2021-01-05 05:20:36', '2021-01-06 11:43:19', 0),
+(6, 'admin', 'admin@carrental.com', '5c428d8875d2948607f3e3fe134d71b4', NULL, NULL, NULL, NULL, NULL, '2021-01-06 02:30:20', '2021-01-06 02:44:17', 1),
+(8, 'Sa Test', 'sadikdange5@gmail.com', '76d80224611fc919a5d54f0ff9fba446', '8208113871', NULL, NULL, NULL, NULL, '2021-01-06 15:12:28', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -417,7 +416,7 @@ ALTER TABLE `tblpages`
 -- AUTO_INCREMENT for table `tblrole`
 --
 ALTER TABLE `tblrole`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblsubscribers`
@@ -435,7 +434,7 @@ ALTER TABLE `tbltestimonial`
 -- AUTO_INCREMENT for table `tblusers`
 --
 ALTER TABLE `tblusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tblvehicles`
